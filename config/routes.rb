@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :bars, only: [:show, :index]
   get "bar/select" => "bars#bars" 
+  get "/" => "site#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
