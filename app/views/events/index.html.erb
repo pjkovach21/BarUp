@@ -1,0 +1,19 @@
+<h1> SO this is a page with all the Events kids</h1>
+
+
+
+<ul class="js-event-list">
+  <% @events.each do |event| %>
+    <li data-name ="event.title"><%= event.title %>
+    </li>
+  <% end %>
+</ul>
+
+
+    <select class="js-event-date" id="event_date">
+      <option></option>
+      <option>Today</option>
+      <option>Tomorrow</option>
+      <option >This Week</option>
+      <option >This Month</option>
+    </select>

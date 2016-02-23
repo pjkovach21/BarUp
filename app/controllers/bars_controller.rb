@@ -6,4 +6,8 @@ class BarsController < ApplicationController
 		@bars = Bar.all
 		render json: @bars
 	end
+
+	def show
+		@bar = Bar.find(params[:id])
+	end
 end

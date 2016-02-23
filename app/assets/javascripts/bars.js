@@ -25,8 +25,9 @@ function filterBars(barType){
 			console.log(barNewArray)
 			if (barNewArray.length!==0){
 	            barNewArray.forEach (function(bar){
+	            	
 	            	$(".js-bar-list").append(`<li>${bar.bar}</li>`);
-	           
+
 	            });
 	        }else{
 	        	alert("There are no bars in this category");
