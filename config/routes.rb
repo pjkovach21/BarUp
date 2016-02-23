@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :bars
+  devise_for :bars, controllers: { registrations: "bars/registrations" }
   devise_for :users
-  resources :events
-  resources :promos
-  resources :event_registations
-  resources :registrations
+  # resources :events
+  # resources :promos
+  # resources :event_registrations
+  # resources :registrations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

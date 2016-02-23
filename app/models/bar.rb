@@ -7,6 +7,7 @@ class Bar < ActiveRecord::Base
     has_many :users, through: :registrations
     has_many :promos
     has_many :events
-    belongs_to :location
     enum bar_type: [:College, :Dive, :Dance, :Club, :Cocktail, :Hotel]
+    has_many :locations
+    accepts_nested_attributes_for :locations
 end
