@@ -1,0 +1,17 @@
+<ul class="js-bar-list">
+  <% @bars.each do |bar| %>
+    <li data-name ="bar.bar_type"><%= bar.bar %>
+    </li>
+  <% end %>
+</ul>
+
+
+    <select class="js-bar-type" id="bar_type">
+      <option></option>
+      <option>College</option>
+      <option>Club</option>
+      <option >Dance</option>
+      <option >Cocktail</option>
+      <option >Dive</option>
+    </select>
+

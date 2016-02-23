@@ -1,2 +1,31 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+
+$(document).ready(function(){
+	$(".js-bar-type").on("change", function(){
+		var barType = $(".js-bar-type").val();
+		console.log(barType)
+		filterBars(barType)
+	});
+});
+
+
+function filterBars(barType){
+	console.log("filtering Bars")
+	$.ajax ({
+		url: `bar/select`,
+		success: function(response){
+			console.log(response);
+			$(".js-bar-list").empty();
+			response.forEach(function(bar){
+				
+				$(".js-bar-list").append(`<li>${bar.bar}</li>`)
+
+			})
+		},
+		error: function(){
+			console.log("something went wrong");
+		}
+	});
+}
+	
