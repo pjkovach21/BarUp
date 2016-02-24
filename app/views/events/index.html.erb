@@ -4,16 +4,17 @@
 
 <ul class="js-event-list">
   <% @events.each do |event| %>
-    <li data-name ="event.title"><%= event.title %>
+    <li data-name ="event.title">
+    <%= event.title %>
     </li>
   <% end %>
 </ul>
 
-
+	<p>choose a time frame</p>
     <select class="js-event-date" id="event_date">
       <option></option>
-      <option value =<%= "#{@today}" %>>Today</option>
-      <option value = <%="#{@tomorrow}"%>>Tomorrow</option>
-      <option value = <%="#{@this_week}"%>>This Week</option>
-      <option value = <%="#{@this_month}"%>>This Month</option>
+      <option value="today">Today</option>
+      <option value="tomorrow">Tomorrow</option>
+      <option value="this_week">This Week</option>
+      <option value="this_month">This Month</option>
     </select>

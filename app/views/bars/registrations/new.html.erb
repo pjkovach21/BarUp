@@ -17,9 +17,9 @@
   <%=f.select :bar_type, Bar.bar_types.keys.to_a%>
 
   <div>
-    <%#= f.fields_for :locations do |lf| %>
-      <%#= lf.select :neighborhood, Location.neighborhoods.keys.to_a%>
-      <%= f.select :location_ids, Location.all.collect {|t| [t.location, t.id]}, {} %><!-- multiple: true %> for multiple locations -->
+    <%= f.fields_for :locations do |lf| %>
+      <%= lf.select :neighborhood, Location.neighborhoods.keys.to_a %> 
+      <% end %>  
 
   
   </div>

@@ -1,4 +1,6 @@
+require 'Date'
 class EventsController < ApplicationController
+
 	def show
 	end
 
@@ -8,30 +10,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
-
-		@today = DateTime.today.beginning_of_day..DateTime.today.end_of_day
-
-		nextday = Date.today + 1.day
-		@tomorrow = nextday.beginning_of_day..nextday.end_of_day
-
-		@this_week = Date.today..Date.today.at_end_of_week
-
-		@this_month = Date.today..Date.today.at_end_of_month
-
-		
-		
-		# today_range = Date.today.beginning_of_day..Date.today.end_of_day
-  #    	@today=@events.where(start_date: today_range)
-		
-		# nextday = Date.today + 1.day
-		# tomorrow_range = nextday.beginning_of_day..nextday.end_of_day
-		# @tomorrow = @events.where(start_date: tomorrw_range)
-
-		# week_range = Date.today..Date.today.at_end_of_week
-  #    	@this_week=@events.where(start_date: week_range)
-     	
-  #    	month_range = Date.today..Date.today.at_end_of_month
-  #    	@this_month = @events.where(start_date: month_range)
+	
 	end
 
 	def edit
@@ -39,7 +18,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-    event_params = params.require(:event).permit(:title, :decription, :date)
+    event_params = params.require(:event).permit(:title, :description, :date)
     @event = Event.new(event_params)
 
     unless @event.save
@@ -50,10 +29,33 @@ class EventsController < ApplicationController
     end
   end
 
-  	def event
-		@event = Event.all
+  	def filter
+		@events = Event.all
 
-		render json: @event
+		if params[:filter] == "today"
+			range = Date.today.beginning_of_day..Date.today.end_of_day
+     	elsif 
+     		params[:filter] == "tomorrow"
+     		tomorrow = Date.today + 1
+			range = tomorrow.beginning_of_day..tomorrow.end_of_day
+		elsif 
+			params[:filter] == "this_week"
+			range = Date.today.beginning_of_day..Date.today.end_of_week
+		elsif 
+			params[:filter] == "this_month"
+			range = Date.today.beginning_of_day..Date.today.end_of_month
+		end	
+
+		
+     	 @filteredevents = Event.where(date: range)
+     	# @filteredevents = []
+     	# @events.each do |event|
+     	# 	if event.date == range
+     	# 		@filteredevents.push(event)
+     	# 	end
+     	
+
+		render json: @filteredevents	
 	end
 
 	def destroy

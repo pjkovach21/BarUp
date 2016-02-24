@@ -4,7 +4,9 @@ class Bars::RegistrationsController < Devise::RegistrationsController
 
    #GET /resource/sign_up
   def new
-    super
+    build_resource({})
+    resource.locations.build
+    respond_with self.resource
   end
  
   # def create
@@ -42,7 +44,7 @@ class Bars::RegistrationsController < Devise::RegistrationsController
   protected
 
    def sign_up_params
-      params.require(resource_name).permit(:email, :bar, :password, :password_confirmation, :bar_type, location_ids: [])
+      params.require(resource_name).permit(:email, :bar, :password, :password_confirmation, :bar_type, :locations_attributes => [:neighborhood, :location])
       # params.require(resource_name).permit!
     end
   # If you have extra params to permit, append them to the sanitizer.

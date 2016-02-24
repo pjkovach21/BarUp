@@ -3,13 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :promos
-  resources :event_registrations
-  resources :registrations
   resources :users, only: [:show]
   resources :bars, only: [:show, :index]
   get "bar/select" => "bars#bars" 
   get "/" => "site#home"
-  get "event/select" => "events#event"
+  get "event/select/:filter" => "events#filter"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
