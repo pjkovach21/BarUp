@@ -7,7 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<ul>
+	<li>
+		<a href="/">Home</a>
+		<% if current_user %>
+		<%= link_to "My Profile", user_path(current_user) %>
+		<%=	link_to "User Logout", destroy_user_session_path(current_user), :method => :delete %>
 
+
+		<%= link_to "Events", events_path() %>
+		<%= link_to "Bars", bars_path() %>
+		<%  elsif current_bar %>
+		<%= link_to "My Profile", bar_path(current_bar) %>
+		<%=	link_to "Bar Logout", destroy_bar_session_path(current_bar), :method => :delete %>
+
+		<%= link_to "Events", events_path() %>
+		<%= link_to "Bars", bars_path() %>
+		<%  else %>
+		<%= link_to "Events", events_path() %>
+		<%= link_to "Bars", bars_path() %>
+		<%  end %>
+	</li>
+</ul>
 <%= yield %>
 
 </body>

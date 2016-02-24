@@ -15,3 +15,10 @@
       <option >Dive</option>
     </select>
 
+  <div class ="js-bar-location" id="bar_location">
+  <%= form_for :location do |f| %>
+      <%= f.select :bar_id , Location.neighborhoods.keys.to_a %> 
+      <% end %>  
+  </div>
+
+

@@ -7,6 +7,11 @@ $(document).ready(function(){
 		console.log(barType)
 		filterBars(barType)
 	});
+	$(".js-bar-location").on("change", function(){
+		var barLoc = $(".js-bar-location").val();
+		console.log(barLoc)
+		filterLocation(barLoc)
+	});
 });
 
 
@@ -39,4 +44,29 @@ function filterBars(barType){
 		}
 	});
 }
+
+
+// this is messed up
+// what am i 
+function filterLocation(barLoc){
+	console.log("filter location")
+	$.ajax ({
+		// bar type is not defined in this function
+		url: `bar/select/?bar_type=${barType}&neighnorhood=${barLoc}`,
+		success: function(response){
+		console.log(response, "2nd console")
+		$(".js-bar-list").empty();
+		varBarlocArray= response.filter(
+			function (bar){
+			$(".js-bar-list").append(`<li>${bar.bar}</li>`);
+			});
+		},
+		error: function(){
+		console.log("something went wrong");
+		}
+	});
 	
+}
+	
+
+

@@ -23,9 +23,15 @@ function filterEvents(eventDate){
 			console.log("Event select", response);
 			$(".js-event-list").empty();
 				var eventNewArray = response.filter(
+					
 					function (events){
-
-					$(".js-event-list").append(`<li>${events.title} details: ${events.description} </li>`);	
+					
+					$(".js-event-list").append(`<li>${events.title} details: ${events.description} </li>`);
+					// need to make the if empty statement work
+					// }
+					// else{
+					// 	alert("shit is empty")
+					// }	
 				});
 				
 			  

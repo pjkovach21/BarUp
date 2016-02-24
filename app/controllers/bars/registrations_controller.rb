@@ -2,6 +2,9 @@ class Bars::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
+ 
+  
+ 
    #GET /resource/sign_up
   def new
     build_resource({})
@@ -41,12 +44,16 @@ class Bars::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
+
   protected
 
    def sign_up_params
       params.require(resource_name).permit(:email, :bar, :password, :password_confirmation, :bar_type, :locations_attributes => [:neighborhood, :location])
       # params.require(resource_name).permit!
     end
+
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.for(:sign_up) << :attribute

@@ -10,4 +10,15 @@ class Bar < ActiveRecord::Base
     enum bar_type: [:College, :Dive, :Dance, :Club, :Cocktail, :Hotel]
     has_many :locations
     accepts_nested_attributes_for :locations
+
+    rolify strict: true
+  
+    after_create :assign_default_role
+
+
+    private
+
+    def assign_default_role
+      add_role(:default_user) if self.roles.blank?
+    end
 end
