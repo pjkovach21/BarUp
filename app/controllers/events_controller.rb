@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 	def new
 		@bar = current_bar
 		@event = @bar.events.new
+		@event.location = Location.new
 	end
 
 	def index
@@ -55,7 +56,7 @@ class EventsController < ApplicationController
   		end
 	end
 
-  	def filter
+	def filter
 		@events = Event.all
 
 		if params[:filter] == "today"
@@ -84,6 +85,31 @@ class EventsController < ApplicationController
 		render json: @filteredevents	
 	end
 
+
+
+
+
+		
+     	 # @filteredevents = Event.where(date: range)
+     	# @filteredevents = []
+     	# @events.each do |event|
+     	# 	if event.date == range
+     	# 		@filteredevents.push(event)
+     	# 	end
+	# 	bar_loc = params[:barloc]
+	# 	@rb = []
+	# 	@bars_by_type.each do |bar|
+	# 		bar.locations.each do |b|
+	# 			if b.neighborhood.downcase == bar_loc.downcase
+	# 				@rb.push(bar)
+	# 			end
+	# 		end
+	# 	end
+
+
+	# 	render json: @filteredevents	
+	# end
+
 	private
 
 	def check_if_can_create_event
@@ -94,13 +120,13 @@ class EventsController < ApplicationController
 
 	def check_if_can_edit_or_destroy
 		event = Event.find_by_id(event_id)
-		unless current_bar && (cuurent_user.has_role?(:admin) || current_bar.has_role?(:event_author, post))
+		unless current_bar && (current_user.has_role?(:admin) || current_bar.has_role?(:event_author, post))
 			redirect_to "/posts", warning: "you cant do this"
 			
 		end
 	end
 	def event_params
-      params.require(:event).permit(:title, :date, :description)
+      params.require(:event).permit(:title, :date, :description, :location_attributes => [:neighborhood, :location])
     end
 	
 end

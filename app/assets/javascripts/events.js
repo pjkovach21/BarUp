@@ -1,9 +1,11 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
 $(document).ready(function(){
 	$(".js-event-date").on("change", function(){
 		var eventDate = $(".js-event-date").val();
+		// eventLoc = $(".js-bar-loc").val();
 		console.log(eventDate)
 		filterEvents(eventDate)
 	});
@@ -22,18 +24,20 @@ function filterEvents(eventDate){
 		success: function(response){
 			console.log("Event select", response);
 			$(".js-event-list").empty();
-				var eventNewArray = response.filter(
+					// if (response.length!==0){
+					var eventNewArray = response.filter(
 					
 					function (events){
 					
+					
 					$(".js-event-list").append(`<li>${events.title} details: ${events.description} </li>`);
 					// need to make the if empty statement work
-					// }
+					});
+				// }
 					// else{
 					// 	alert("shit is empty")
 					// }	
-				});
-				
+			},
 			  
 			//  var eventNewArray=response.filter(
 			// 	 function (events){
@@ -50,7 +54,7 @@ function filterEvents(eventDate){
 			// }else{
 			// 	alert("No events on this search")
 			// }
-			},
+			
 			error: function(){
 				console.log("shit hit the fan")
 			}

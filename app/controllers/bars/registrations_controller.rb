@@ -53,7 +53,7 @@ class Bars::RegistrationsController < Devise::RegistrationsController
       # params.require(resource_name).permit!
     end
 
-d
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.for(:sign_up) << :attribute

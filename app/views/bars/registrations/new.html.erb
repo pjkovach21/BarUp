@@ -20,8 +20,6 @@
     <%= f.fields_for :locations do |lf| %>
       <%= lf.select :neighborhood, Location.neighborhoods.keys.to_a %> 
       <% end %>  
-
-  
   </div>
 
   <!-- <select id="bar_type" name="bar[bar_type]">

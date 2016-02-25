@@ -3,9 +3,6 @@ HEY THIS SHIT workds now make an event
 </h1>
 
 
-
-
-
 <%= form_for @event do |form| %>
   <div>
     <%= form.label :title %>
@@ -22,7 +19,17 @@ HEY THIS SHIT workds now make an event
     <%= form.datetime_local_field :date %>
   </div>
 
+  <div class="form-group">
+    <%= form.fields_for :location do |lf| %>
+      <%= lf.select :neighborhood, Location.neighborhoods.keys.to_a %> 
+      <% end %>
+</div>
+
   <button type="submit">
     Add event
   </button>
 <% end %>
+
+
+
+
