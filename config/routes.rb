@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :promos
   resources :users, only: [:show]
   resources :bars, only: [:show, :index]
-  get "bar/select" => "bars#bars" 
+  get "bar/select/bar_type/:bartype/locations/:barloc" => "bars#bars" 
   get "/" => "site#home"
   get "event/select/:filter" => "events#filter"
   # The priority is based upon order of creation: first created -> highest priority.
