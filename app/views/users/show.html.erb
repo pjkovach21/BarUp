@@ -2,3 +2,14 @@
 
 <!-- #need to make where on user can view their profile
  -->
+<p> you are following these Bars <p>
+<p>Total following count <%= @user.follow_count %></p>
+<ul>
+<% @following.each do |list| %>
+	<li>
+		<p>Bar Name: <%= list.bar %></p>
+		<p>Bar Type: <%= list.bar_type %></p>
+		<p> unFollow: <%= link_to "unfollow this lame bar", unfollow_bar_path(list) %>  </p>
+	</li>
+<% end %>
+</ul>

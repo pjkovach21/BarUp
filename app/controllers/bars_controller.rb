@@ -28,5 +28,26 @@ class BarsController < ApplicationController
 
 	def show
 		@bar = Bar.find(params[:id])
+		@followerCount = @bar.followers_count
+	end
+
+
+	def follow
+		@bar = Bar.find(params[:id])
+		# @followerCount = @bar.followers_count
+		current_user.follow(@bar)
+		redirect_to (:back)
+		# render :text =>"followed"
+	end
+
+	def unfollow
+		@bar  = Bar.find(params[:id])
+		current_user.stop_following(@bar)
+		redirect_to (:back)
+	end
+
+	def follows_count
+		#go on user page
+		current_user.follow_count
 	end
 end

@@ -3,3 +3,12 @@
 <!-- only for bar owner to create -  not on page for viewer -->
 <%= link_to "Create Event", new_event_path() %>
 <!-- need a follow button -->
+
+<%= link_to "follow", follow_bar_path(@bar) %>
+<%= link_to "unfollow this lame bar", unfollow_bar_path(@bar) %>
+
+<h2> Followers </h2>
+<%= @followerCount %>
+
+
+

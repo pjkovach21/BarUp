@@ -1,8 +1,11 @@
 <ul class="js-bar-list">
   <% @bars.each do |bar| %>
     <li data-name ="bar.bar_type"><%= bar.bar %>
+        <%= link_to "Bar Page", bar_path(bar) %>
     </li>
   <% end %>
+
+
 </ul>
 
   <form>

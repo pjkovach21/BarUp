@@ -5,5 +5,6 @@ class Event < ActiveRecord::Base
 	has_many :users, through: :event_registrations
 	belongs_to :location
 	accepts_nested_attributes_for :location
+	acts_as_followable
 
 end
