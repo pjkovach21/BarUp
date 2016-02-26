@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+		@followCount = @event.followers_count
 	end
 
 	def new
@@ -15,7 +16,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
-	
+		
 	end
 
 	def edit
@@ -85,6 +86,18 @@ class EventsController < ApplicationController
 		render json: @filteredevents	
 	end
 
+
+	def follow
+		@event = Event.find(params[:id])
+		current_user.follow(@event)
+		redirect_to (:back)
+	end
+
+	def unfollow
+		@event = Event.find(params[:id])
+		current_user.stop_following(@event)
+		redirect_to (:back)
+	end
 
 
 

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :bars, controllers: { registrations: "bars/registrations" }
   devise_for :users
-  resources :events
+  resources :events do
+    member do
+      get :follow
+      get :unfollow
+      get :followers_count
+    end
+  end
+  
   resources :promos
   resources :users, only: [:show] 
 

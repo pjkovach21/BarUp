@@ -1,1 +1,9 @@
 <h1> This event is cool <%= @event.title %> <h2>
+
+<p> This event is crazy, you should join</p>
+
+<p>This event has <%= @followCount %> followers</p>
+<!-- try and get a profile picture -->
+
+<%= link_to "follow", follow_event_path(@event) %>
+<%= link_to "this event isnt for me", unfollow_bar_path(@event) %>

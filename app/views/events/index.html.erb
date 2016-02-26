@@ -7,6 +7,7 @@
   <% @events.each do |event| %>
     <li data-name ="event.title">
     <%= event.title %>
+    <%= link_to "Event Page", event_path(event)%>
     </li>
   <% end %>
 </ul>

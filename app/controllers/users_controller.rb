@@ -8,7 +8,5 @@ class UsersController < ApplicationController
 
 
 
-	def destroy
-		render "/"
-	end
+
 end

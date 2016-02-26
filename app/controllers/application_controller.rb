@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :username
       # params.require(resource_name).permit!
   end
+
+  private
+  #  def after_sign_out_path_for(resource_or_scope)
+  #   redirect_to "/"
+  # end
 end
