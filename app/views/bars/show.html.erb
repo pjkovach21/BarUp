@@ -7,8 +7,10 @@
 <%= link_to "follow", follow_bar_path(@bar) %>
 <%= link_to "unfollow this lame bar", unfollow_bar_path(@bar) %>
 
-<% if current_bar.id == @bar.id %>
-<%= link_to "Create a Promo", new_promo_path() %>
+<%if !current_user %>
+	<% if current_bar.id == @bar.id %>
+	<%= link_to "Create a Promo", new_promo_path() %>
+	<% end %>
 <% end %>
 
 <h2> Followers </h2>

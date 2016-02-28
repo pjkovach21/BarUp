@@ -17,6 +17,7 @@ class Bar < ActiveRecord::Base
   
     after_create :assign_default_role
 
+    
 
     private
 

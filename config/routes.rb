@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get "bar/select/bar_type/:bartype/locations/:barloc" => "bars#bars" 
   get "/" => "site#home"
   get "event/select/:filter" => "events#filter"
+  get "/bar/:id/email" => "bars#email_form"
+  post "bar/:id/sendmail" => "bars#send_form"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

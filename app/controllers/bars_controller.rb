@@ -1,4 +1,7 @@
 class BarsController < ApplicationController
+	
+
+
 	def index
 		@bars= Bar.all
 	end
@@ -24,6 +27,22 @@ class BarsController < ApplicationController
 
 
 		render json: @rb
+	end
+
+	def send_form
+		@bar = Bar.find_by(id: params[:id])
+		@bar.followers.each do |follower|
+		
+			BarMailer.bar_email(follower, params[:subject], params[:body]).deliver_now
+		end
+
+		redirect_to "/"
+	end
+
+	def email_form
+		@bar = Bar.find_by(id: params[:id])
+		# @bar = current_bar
+		
 	end
 
 	def show

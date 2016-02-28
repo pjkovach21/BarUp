@@ -26,8 +26,11 @@ gem "rolify"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "acts_as_follower"
+#gem "mail"
 # Use Unicorn as the app server
 # gem 'unicorn'
+#gem 'acts_as_commentable'
+gem  "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
