@@ -49,7 +49,9 @@ class BarsController < ApplicationController
 		@bar = Bar.find(params[:id])
 		@followerCount = @bar.followers_count
 
+		if current_user
 		 @new_comment = Comment.build_from(@bar, current_user.id, "")
+		end
 		#@all_comments = @bar.comment_threads
 
 	end

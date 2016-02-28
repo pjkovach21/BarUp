@@ -1,9 +1,14 @@
+
 <% comments.each do |comment| %>  
   <div class="comments-show">
     <div class="comment">
       <p><%= comment.body %><br></p>
+      <!-- a bar can not reply yet, but they need to be able to see comments -->
+      <%if current_user %>
       <div class="comment-nav"><a href="#" class="comment-reply">reply</a></div>
+      <% end %> 
       <div class="reply-form">
+      <%if current_user %>
         <%= form_for @new_comment do |f| %>
           <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
           <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
@@ -17,6 +22,7 @@
         <% end %>
       </div>
     </div>
+    <% end %> 
     <%= render partial: "comments/reply", locals: {comments: comment.children} %>
   </div>
 <% end %> 
