@@ -31,6 +31,8 @@ gem "acts_as_follower"
 # gem 'unicorn'
 #gem 'acts_as_commentable'
 gem  "figaro"
+gem 'awesome_nested_set'
+gem 'acts_as_commentable_with_threading'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

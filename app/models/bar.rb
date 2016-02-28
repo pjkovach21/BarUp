@@ -11,6 +11,8 @@ class Bar < ActiveRecord::Base
     has_many :locations
     accepts_nested_attributes_for :locations
 
+    acts_as_commentable
+
     acts_as_followable
 
     rolify strict: true

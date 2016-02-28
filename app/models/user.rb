@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
     acts_as_follower
 
-
+    has_many :comments
     has_many :registrations
     has_many :bars, through: :registrations
     has_many :event_registrations

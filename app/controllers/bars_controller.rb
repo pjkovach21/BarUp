@@ -48,6 +48,10 @@ class BarsController < ApplicationController
 	def show
 		@bar = Bar.find(params[:id])
 		@followerCount = @bar.followers_count
+
+		 @new_comment = Comment.build_from(@bar, current_user.id, "")
+		#@all_comments = @bar.comment_threads
+
 	end
 
 
@@ -69,4 +73,10 @@ class BarsController < ApplicationController
 		#go on user page
 		current_user.follow_count
 	end
+
+	
+
+		
+
+
 end

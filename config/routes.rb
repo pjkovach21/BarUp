@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :comments
+
   resources :promos
   resources :users, only: [:show] 
 
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
   get "event/select/:filter" => "events#filter"
   get "/bar/:id/email" => "bars#email_form"
   post "bar/:id/sendmail" => "bars#send_form"
+  #post "bar/:id/comment" => "comments#new"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

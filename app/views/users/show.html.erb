@@ -5,10 +5,15 @@
 <p> you are following these Bars <p>
 <p>Total following count <%= @user.follow_count %></p>
 <ul>
+
+<!-- bar_type is not workinf for some reason? -->
+<!-- unfollow is not working too -->
+<!-- it keeps the bar name and shit, but bar is removed -->
+<!-- does not remove bars without names -->
 <% @following.each do |list| %>
 	<li>
 		<p>Bar Name: <%= list.bar %></p>
-		<p>Bar Type: <%= list.bar_type %></p>
+		
 		<p> unFollow: <%= link_to "unfollow this lame bar", unfollow_bar_path(list) %>  </p>
 	</li>
 <% end %>
