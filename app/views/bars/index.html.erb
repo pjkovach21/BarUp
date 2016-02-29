@@ -1,34 +1,57 @@
-<ul class="js-bar-list">
-  <% @bars.each do |bar| %>
-    <li data-name ="bar.bar_type"><%= bar.bar %>
-        <%= link_to "Bar Page", bar_path(bar) %>
-    </li>
-  <% end %>
+<!-- <div class="container-fluid">
+  --><div class="row">
+    
+    <div class="col s3 sidebar" style="position: fixed;">
+      <form>
+        <select style="display: block;" class="js-bar-type" id="bar_type">
+          <option></option>
+          <option>College</option>
+          <option>Club</option>
+          <option >Dance</option>
+          <option >Cocktail</option>
+          <option >Dive</option>
+        </select>
+        
+        
+        <select style="display: block;" class="js-bar-loc" id="bar_loc">
+          <% Location.neighborhoods.keys.to_a.each do |loc| %>
+          <option> <%= loc %> </option>
+          <% end %>
+        </select>
+      </form>
+    </div>
 
+    <div class="col s9 offset-s3 scrollcol" style=" overflow: scroll ; height: 100%; ">
+      <ul class="js-bar-list">
+        <% @bars.each do |bar| %>
+        <a class="social-icons modal-trigger" href="#modal4"> 
+        <li data-name ="bar.bar_type">
+          <div class="card small smallcard">
+            <span class="card-title"> <%= bar.bar %></span></a>
+            <div class="card-content">
+                <%= bar.bar_type %>
+                
+            </div>
+            <div class="card-action">
+              <div><%= link_to "Bar Page", bar_path(bar) %></div>
+            </div>
+          </div>
+         <div id="modal4" class="modal modal-fixed-footer">
+           <div class="modal-content">
+     
+             <h4><%= bar.bar %></h4>
+             <p>A bunch of text about how cool this website is</p>
+          </div>
+ 
+         <div class="modal-footer">
+          <a href="/bars/<%= bar.id %>/follow" class="modal-action modal-close waves-effect waves-green btn-flat center-align">follow</a>
+      <a href="/bars/<%= bar.id %>" class="modal-action modal-close waves-effect waves-green btn-flat "> Bar Page</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <!-- </div> -->
 
-</ul>
-
-  <form>
-    <select class="js-bar-type" id="bar_type">
-      <option></option>
-      <option>College</option>
-      <option>Club</option>
-      <option >Dance</option>
-      <option >Cocktail</option>
-      <option >Dive</option>
-    </select>
-
-  
-  <select class="js-bar-loc" id="bar_loc">
-    <% Location.neighborhoods.keys.to_a.each do |loc| %>
-     <option> <%= loc %> </option>
-      <% end %> 
-    </select>
-  </form>
-
-
-
-
-
-
-
+            
+   

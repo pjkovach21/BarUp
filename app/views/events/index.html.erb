@@ -1,26 +1,64 @@
-<h1> SO this is a page with all the Events kids</h1>
-<%= link_to "Want to create an event", new_event_path() %>
-
-
-
-<ul class="js-event-list">
-  <% @events.each do |event| %>
-    <li data-name ="event.title">
-    <%= event.title %>
-    <%= link_to "Event Page", event_path(event)%>
-    </li>
-  <% end %>
-</ul>
 
   
-	<p>choose a time frame</p>
-    <select class="js-event-date" id="event_date">
-      <option></option>
-      <option value="today">Today</option>
-      <option value="tomorrow">Tomorrow</option>
-      <option value="this_week">This Week</option>
-      <option value="this_month">This Month</option>
-    </select>
+
+
+
+</div>
+<div class="row" >
+
+    <div class="col s3" style="position: fixed;">
+      <p>choose a time frame</p>
+          <select style="display: block"; class="js-event-date" id="event_date">
+            <option></option>
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="this_week">This Week</option>
+            <option value="this_month">This Month</option>
+          </select>
+    </div>
+
+    <div class="col s9 offset-s3 scrollcol" style=" overflow: scroll ; height: 100%; ">
+      <ul class="js-event-list">
+        <% @events.each do |event| %>
+         <a class="social-icons modal-trigger" href="#modal3"> 
+            <li data-name ="event.title">
+             
+              <div class="card small smallcard">
+              
+               
+                <span class="card-title"> <%= event.title %></span></a>
+                <div class="card-content">
+                <%= event.title %>
+                </div>
+                <div class="card-action">
+                <div><%= link_to "Event Page", event_path(event)%></div>
+                </div>
+            </div>
+
+            
+    <div id="modal3" class="modal modal-fixed-footer">
+     <div class="modal-content">
+     
+      <h4><%= event.title %></h4>
+      <p>A bunch of text about how cool this website is</p>
+    </div>
+ 
+     <div class="modal-footer">
+      <a href="/bars/sign_in" class="modal-action modal-close waves-effect waves-green btn-flat center-align">follow</a>
+      <a href="/events/<%= event.id %>" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Event Page</a> 
+      </div>
+          </li>
+
+        <% end %>
+
+      </ul>
+      </div>
+</div>
+
+
+
+
+  
 
 
 

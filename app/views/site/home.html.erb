@@ -1,14 +1,48 @@
-<h1>Welcome to BarUp</h1>
+<div class="row">
 
-<p> The World's first nightlife social media app</p>
+<h1 class="center-align">Welcome to BarUp</h1>
 
- <%= link_to "Register Your Bar", new_bar_registration_path() %>
+<p class="center-align"> The World's 54th nightlife social media app</p>
+</div>
 
- <%= link_to "Sign in to Your Bar", new_bar_session_path() %>
+<div class="row">
+<div class="center-align" >
+<div class="col s6 center-align">
+<h2>Are you a drinker</h2>
+<a class="social-icons modal-trigger" href="#modal1"> <i class="large mdi mdi-emoticon-devil"></i></a>
+ <div id="modal1" class="modal modal-fixed-footer">
+     <div class="modal-content">
+      <h4>Drinkers</h4>
+      <p>A bunch of text about how cool this website is</p>
+    </div>
+ 
+     <div class="modal-footer">
+      <a href="/users/sign_in" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Sign In</a>
+      <a href="/users/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat ">Sign Up Today</a>
+      </div>
+    </div>
+  </div>
 
- <%= link_to "Sign in to User account",
- new_user_session_path() %>
+<div class="col s6 center-align">
+<h2>Are you a bar</h2>
+ <a class="social-icons modal-trigger" href="#modal2"> <i class="large mdi mdi-beer"></i></a>
+ <div id="modal2" class="modal modal-fixed-footer">
+     <div class="modal-content">
+     
+      <h4>Bars</h4>
+      <p>A bunch of text about how cool this website is</p>
+    </div>
+ 
+     <div class="modal-footer">
+      <a href="/bars/sign_in" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Sign In</a>
+      <a href="/bars/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat ">Sign Up Today</a>
+      </div>
+    </div>
+  </div>
+ </div>
+ </div>
 
- <%= link_to "Sign up for a User account",
- new_user_registration_path() %>
+
+
+
 

@@ -4,9 +4,12 @@ class BarsController < ApplicationController
 
 	def index
 		@bars= Bar.all
+		
+
 	end
 	def bars
 		@bars = Bar.all
+
 
 		bar_type = params[:bartype]
 		@bars_by_type = []

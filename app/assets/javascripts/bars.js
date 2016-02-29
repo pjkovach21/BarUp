@@ -19,6 +19,7 @@ $(document).ready(function(){
 		console.log(barLoc)
 		filterBars(barType, barLoc)
 	});
+	$('.modal-trigger').leanModal();
 });
 
 // parmas: [location]
@@ -35,8 +36,36 @@ function filterBars(bartype, barloc){
 			$(".js-bar-list").empty();
 			if (response.length!==0){
 	            response.forEach (function(bar){
-	            	
-	            	$(".js-bar-list").append(`<li>${bar.bar}</li>`);
+	            	console.log(bar)
+	            	var html =
+	            			`
+						   <a class="social-icons modal-trigger" href="#modal4"> 
+        						<li data-name ="bar.bar_type">
+        						  <div class="card small smallcard">
+         						   <span class="card-title"> ${bar.bar}</span></a>
+           						 <div class="card-content">
+                					${bar.bar_type}
+               						 
+           						 </div>
+           						 <div class="card-action">
+             						 <div><a href="/bars/${bar.id}"> Bar Page</a></div>
+          						  </div>
+          						</div>
+         					<div id="modal4" class="modal modal-fixed-footer">
+          				 <div class="modal-content">
+     
+             				<h4>${bar.bar}</h4>
+             				<p>A bunch of text about how cool this website is</p>
+          				</div>
+ 
+         				<div class="modal-footer">
+         				 <a href="/bars/${bar.id}/follow" class="modal-action modal-close waves-effect waves-green btn-flat center-align">follow</a>
+     					 <a href="/bars/${bar.id}" class="modal-action modal-close waves-effect waves-green btn-flat "> Bar Page</a>
+         				</div>
+         				 </li>
+						`
+
+	            	$(".js-bar-list").append(html);
 
 	            });
 	        }else{
@@ -49,6 +78,8 @@ function filterBars(bartype, barloc){
 		}
 	});
 }
+
+
 
 
 // // this is messed up

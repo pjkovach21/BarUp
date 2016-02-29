@@ -5,31 +5,51 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+		<sript src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+		<link href="https://cdn.materialdesignicons.com/1.4.57/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+		
 </head>
 <body>
-<ul>
-	<li>
-		<a href="/">Home</a>
-		<% if current_user %>
-		<%= link_to "My Profile", user_path(current_user) %>
-		<%=	link_to "User Logout", destroy_user_session_path, data: { :method => :delete } %>
+	<nav>
+		<ul>
+			
+			<div class="navbar-wrapper right">
+				<li><% if current_user %> </li>
+				<li><%= link_to "My Profile", user_path(current_user) %> </li>
+				<li><%=	link_to "User Logout", destroy_user_session_path, data: { :method => :delete } %> </li>
 
 
-		<%= link_to "Events", events_path() %>
-		<%= link_to "Bars", bars_path() %>
-		<%  elsif current_bar %>
-		<%= link_to "My Profile", bar_path(current_bar) %>
-		<%=	link_to "Bar Logout", destroy_bar_session_path(), :method => :delete %>
+				<li><%= link_to "Events", events_path() %></li>
+				<li><%= link_to "Bars", bars_path() %></li>
+				<%  elsif current_bar %>
+				<li><%= link_to "My Profile", bar_path(current_bar) %></li>
+				<li><%=	link_to "Bar Logout", destroy_bar_session_path(), :method => :delete %></li>
 
-		<%= link_to "Events", events_path() %>
-		<%= link_to "Bars", bars_path() %>
-		<%  else %>
-		<%= link_to "Events", events_path() %>
-		<%= link_to "Bars", bars_path() %>
-		<%  end %>
-	</li>
-</ul>
+				<li><%= link_to "Events", events_path() %></li>
+				<li><%= link_to "Bars", bars_path() %></li>
+				<%  else %>
+				<li><a href="/">Home</a></li>
+				<li><%= link_to "Events", events_path() %></li>
+				<li><%= link_to "Bars", bars_path() %></li>
+				<li> <%= link_to "Sign in to User account",
+ 				new_user_session_path() %></li>
+ 				 <li><%= link_to "Sign up for a User account",
+ 				new_user_registration_path() %></li>
+ 				 <li><%= link_to "Register Your Bar", new_bar_registration_path() %></li>
+ 				 <li><%= link_to "Sign in to Your Bar", new_bar_session_path() %></li>
+				<%  end %>
+				</div>
+			
+		</ul>
+	</nav>
 <%= yield %>
+
+ 
+
 
 </body>
 </html>

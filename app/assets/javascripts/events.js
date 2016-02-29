@@ -27,10 +27,41 @@ function filterEvents(eventDate){
 					// if (response.length!==0){
 					var eventNewArray = response.filter(
 					
-					function (events){
+					function (event){
+						var html =
+						`
+        				 <a class="social-icons modal-trigger" href="#modal3"> 
+            				<li data-name ="event.title">
+             
+             				 <div class="card small smallcard">
+              
+               
+               				 	<span class="card-title"> ${event.title}</span></a>
+               				 	<div class="card-content">
+               					 	${event.title}
+                				</div>
+                				<div class="card-action">
+               					 <div> <a href="/events/${event.id}">Event Page</a></div>
+               				 </div>
+            			</div>
+
+            
+   						 <div id="modal3" class="modal modal-fixed-footer">
+   						  <div class="modal-content">
+     
+     					 <h4>${event.title}</h4>
+    					  <p>A bunch of text about how cool this website is</p>
+   						 </div>
+ 
+    					 <div class="modal-footer">
+     					 <a href="/bars/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat ">Follow</a>
+    					  <a href="/events/${event.id}" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Event Page</a>
+     					 </div>
+          				</li>
+						`
 					
 					
-					$(".js-event-list").append(`<li>${events.title} details: ${events.description} </li>`);
+					$(".js-event-list").append(html);
 					// need to make the if empty statement work
 					});
 				// }
