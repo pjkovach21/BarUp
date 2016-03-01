@@ -6,6 +6,7 @@ var barLoc;
 
 var the_url
 
+
 $(document).ready(function(){
 	console.log("hi")
 	// $(".js-bar-type").on("change", function(){
@@ -13,10 +14,11 @@ $(document).ready(function(){
 	// 	filterBars()
 	// });
 	$(".js-bar-loc").on("change", function(event){
-		event.preventDefault()
+		// event.preventDefault()
 		barType = $(".js-bar-type").val();
 		barLoc = $(".js-bar-loc").val();
 		console.log(barLoc)
+		console.log(barType)
 		filterBars(barType, barLoc)
 	});
 	$('.modal-trigger').leanModal();

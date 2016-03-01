@@ -1,11 +1,16 @@
+<div class="row barPage" style="display: inline;">
+<div class="col s8 barHeader">
 <h1>Welcome to <%= "#{@bar.bar}" %> </h1>
+</div>
 
 <!-- only for bar owner to create -  not on page for viewer -->
 <!-- need a follow button -->
+<div class="col s4 barFollow">
+<a class="waves-effect waves-light btn" href="/bars/<%= "#{@bar.id}" %>/follow">follow </a>
+<a class="waves-effect waves-red red btn" href="/bars/<%= "#{@bar.id}" %>/unfollow">unfollow </a>
 
-<%= link_to "follow", follow_bar_path(@bar) %>
-<%= link_to "unfollow this lame bar", unfollow_bar_path(@bar) %>
-
+</div>
+</div>
 <%if !current_user && current_bar%>
 	<% if current_bar.id == @bar.id %>
 	<%= link_to "Create a Promo", new_promo_path() %>

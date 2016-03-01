@@ -1,3 +1,6 @@
+<div class="row">
+<div class="col s4"></div>
+<div class="col s4 offset-s4">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,9 +21,12 @@
     </div>
   <% end -%>
 
-  <div class="actions">
+   <div class="actions btn waves-effect waves-light">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
 <%= render "bars/shared/links" %>
+</div>
+<div class="col s4"></div>
+</div>

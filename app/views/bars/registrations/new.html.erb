@@ -1,4 +1,7 @@
-<h2>Signss up</h2>
+<div class="row">
+<div class="col s4"></div>
+<div class="col s4 offset-s4">
+<h2>Bar Registration</h2>
 
 <%= form_for(resource, as: resource_name, url:bar_registration_path(resource)) do |f| %>
   <%= devise_error_messages! %>
@@ -13,14 +16,23 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
  
+ <div class="field" style="display: block;">
+ <p>Bar Type</p>
+  <%= f.select :bar_type, Bar.bar_types.keys.to_a, class: "field", style: "display: inline-
+  block; position: static;" %>
+</div>
 
-  <%=f.select :bar_type, Bar.bar_types.keys.to_a%>
 
-  <div>
+
+  <div class="field" style="display: block;">
+    <p>Neighborhood</p>
     <%= f.fields_for :locations do |lf| %>
       <%= lf.select :neighborhood, Location.neighborhoods.keys.to_a %> 
       <% end %>  
   </div>
+  <script type="text/javascript">
+    $('select').material_select();
+  </script>
 
   <!-- <select id="bar_type" name="bar[bar_type]">
     <option value=""></option>
@@ -46,9 +58,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn waves-effect waves-light">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
 <%= render "bars/shared/links" %>
+
+</div>
+<div class="col s4"></div>
+</div>

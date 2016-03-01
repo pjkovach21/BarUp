@@ -3,19 +3,19 @@
     
     <div class="col s3 sidebar" style="position: fixed;">
       <form>
-        <select style="display: block;" class="js-bar-type" id="bar_type">
-          <option></option>
-          <option>College</option>
-          <option>Club</option>
-          <option >Dance</option>
-          <option >Cocktail</option>
-          <option >Dive</option>
+        <select style="display: inline-block;" class="js-bar-type" id="bar_type"  >
+          <option value=""></option>
+          <option value="College">College</option>
+          <option value="Club">Club</option>
+          <option value="Dance" >Dance</option>
+          <option value="Cocktail" >Cocktail</option>
+          <option value="Dive" >Dive</option>
         </select>
         
         
-        <select style="display: block;" class="js-bar-loc" id="bar_loc">
+        <select style="display: inline-block;" class="js-bar-loc" id="bar_loc" >
           <% Location.neighborhoods.keys.to_a.each do |loc| %>
-          <option> <%= loc %> </option>
+          <option value="<%= loc %>"> <%= loc %> </option>
           <% end %>
         </select>
       </form>
@@ -26,7 +26,7 @@
         <% @bars.each do |bar| %>
         <a class="social-icons modal-trigger" href="#modal4"> 
         <li data-name ="bar.bar_type">
-          <div class="card small smallcard">
+          <div class="card small smallcar">
             <span class="card-title"> <%= bar.bar %></span></a>
             <div class="card-content">
                 <%= bar.bar_type %>
