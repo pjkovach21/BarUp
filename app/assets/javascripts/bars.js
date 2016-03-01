@@ -7,12 +7,18 @@ var barLoc;
 var the_url
 
 
+
 $(document).ready(function(){
 	console.log("hi")
 	// $(".js-bar-type").on("change", function(){
 	// 	console.log(barType)
 	// 	filterBars()
 	// });
+
+	bindButtons();
+
+
+
 	$(".js-bar-loc").on("change", function(event){
 		// event.preventDefault()
 		barType = $(".js-bar-type").val();
@@ -21,6 +27,15 @@ $(document).ready(function(){
 		console.log(barType)
 		filterBars(barType, barLoc)
 	});
+	// Bind events to your buttons
+
+
+// Init binding
+
+
+// Get your answer
+
+
 	$('.modal-trigger').leanModal();
 });
 
@@ -81,6 +96,27 @@ function filterBars(bartype, barloc){
 	});
 }
 
+var bindButtons = function(){
+
+    $('.followBtn').on('click', function( e ){
+    	var url = $(e.currentTarget).prop("href");
+        $.ajax({
+        	url: url,
+        	success: function (response) {
+        		$(".js-follow-count").text(response.count);
+        	}
+        });
+    
+        e.preventDefault();
+        $(e.target)
+            .addClass('disabled')
+            .removeClass('selected')
+        	.siblings()
+            .removeClass('disabled')
+            .addClass('selected');
+    });
+
+};
 
 
 

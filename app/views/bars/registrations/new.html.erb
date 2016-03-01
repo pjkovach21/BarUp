@@ -30,6 +30,8 @@
       <%= lf.select :neighborhood, Location.neighborhoods.keys.to_a %> 
       <% end %>  
   </div>
+
+  <!-- put this here so the drop down buttons work for this page only and do not fuck up the other pages -->
   <script type="text/javascript">
     $('select').material_select();
   </script>

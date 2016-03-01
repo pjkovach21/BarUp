@@ -5,22 +5,56 @@
 
 <!-- only for bar owner to create -  not on page for viewer -->
 <!-- need a follow button -->
-<div class="col s4 barFollow">
-<a class="waves-effect waves-light btn" href="/bars/<%= "#{@bar.id}" %>/follow">follow </a>
-<a class="waves-effect waves-red red btn" href="/bars/<%= "#{@bar.id}" %>/unfollow">unfollow </a>
+
+
+<div class="col s4 barFollow" id="follows">
+<% if current_user %>
+	<% if @bar.followed_by?(current_user) %> 
+	<a class="waves-effect waves-light btn disabled followBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a>
+
+	<a class="waves-effect waves-red red btn followBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a>
+
+	<% elsif %>
+
+	<a class="waves-effect waves-light btn selected followBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a>
+
+	<a class="waves-effect waves-red red btn  disabled followBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a>
+
+	<% end %>
+<% else %>
+	<a class="waves-effect waves-light btn selected followBtn modal-trigger" href="#modal5">follow </a>
+
+	<div id="modal5" class="modal modal-fixed-footer">
+           <div class="modal-content">
+     
+             <h4> Please Sign In </h4>
+             <p>To Follow Bars you need to be signed into an account</p>
+             <p>Following Bars allows you to recieve the most upto date information on events and specials sponsored events</p>
+             <p>Please Sign In to your account to stay connected </p>
+             <p>If you don't have an account, it takes 30 seconds, just click the link below!! </p>
+
+          </div>
+ 
+         <div class="modal-footer">
+          <a href="/users/sign_in" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Sign IN</a>
+      <a href="/users/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat "> Sign Up</a></div>
+      </div>
+<% end %>
+
 
 </div>
-</div>
+<div>
 <%if !current_user && current_bar%>
 	<% if current_bar.id == @bar.id %>
 	<%= link_to "Create a Promo", new_promo_path() %>
 	<%= link_to "Create Event", new_event_path() %>
 	<% end %>
 <% end %>
-
+</div>
+<div>
 <h2> Followers </h2>
-<%= @followerCount %>
-
+<div class="js-follow-count"><%= @followerCount %></div>
+</div>
 
 <%= render partial: "comments/template", locals: {commentable: @bar, new_comment: @comment} %>  
 

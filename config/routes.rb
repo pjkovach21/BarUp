@@ -22,11 +22,13 @@ Rails.application.routes.draw do
     end
   end
 
+
   get "bar/select/bar_type/:bartype/locations/:barloc" => "bars#bars" 
   get "/" => "site#home"
   get "event/select/:filter" => "events#filter"
   get "/bar/:id/email" => "bars#email_form"
   post "bar/:id/sendmail" => "bars#send_form"
+  get "/bars/:id/:followCount" => "bars#follows_ount"
   #post "bar/:id/comment" => "comments#new"
 
 
