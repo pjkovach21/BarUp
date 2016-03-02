@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
-		@followCount = @event.followers_count
+		@followerCount = @event.followers_count
 	end
 
 	def new
@@ -89,18 +89,24 @@ class EventsController < ApplicationController
 
 	def follow
 		@event = Event.find(params[:id])
+		# @followerCount = @bar.followers_count
 		current_user.follow(@event)
-		redirect_to (:back)
+		
+		render :json => { :count => @event.followers_count }
 	end
 
 	def unfollow
-		@event = Event.find(params[:id])
+		@event  = Event.find(params[:id])
 		current_user.stop_following(@event)
-		redirect_to (:back)
+
+		render :json => { :count => @event.followers_count }
 	end
 
-
-
+	def followers_count
+		@event  = Event.find(params[:id])
+		@followerCount = @event.followers_count
+		
+	end
 
 		
      	 # @filteredevents = Event.where(date: range)

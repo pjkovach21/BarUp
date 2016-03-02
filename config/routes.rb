@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :promos
   resources :users, only: [:show] 
 
-  resources :bars, only: [:show, :index] do
+  resources :bars, :events, only: [:show, :index] do
    member do
       get :follow
       get :unfollow
@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   get "event/select/:filter" => "events#filter"
   get "/bar/:id/email" => "bars#email_form"
   post "bar/:id/sendmail" => "bars#send_form"
-  get "/bars/:id/:followCount" => "bars#follows_ount"
+  get "/bars/:id/:followCount" => "bars#follows_count"
+  get "/eventss/:id/:followCount" => "bars#follows_count"
   #post "bar/:id/comment" => "comments#new"
 
 

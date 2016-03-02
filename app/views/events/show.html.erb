@@ -1,9 +1,30 @@
-<h1> This event is cool <%= @event.title %> <h2>
+<div class="row center-align">
+<h1> <%= @event.title %> </h1>
 
-<p> This event is crazy, you should join</p>
 
-<p>This event has <%= @followCount %> followers</p>
+<div class="row center-align ">
+
+<div class="col s4"></div>
+
+<div class="col s4 offset-s4">
+<h3>Event Details</h3>
+<h5><%= @event.description %></h5>
 <!-- try and get a profile picture -->
+	<div class="row" >
+	<h5>Follow Count <%= @followerCount %></h5>
+	</div>
 
-<%= link_to "follow", follow_event_path(@event) %>
-<%= link_to "this event isnt for me", unfollow_event_path(@event) %>
+	<div class="row" >
+
+
+	
+		<div style="display: inline-block;" class="eventBtnlist"><a class="waves-effect waves-light btn followBtn eventBtn" href="/events/<%= @event.id %>/follow" id="follow">follow </a></div>
+
+		<div style="display: inline-block;" class="eventBtnlist"><a class="waves-effect waves-red red btn followBtn eventBtn" href="/events/<%= @event.id %>/unfollow"  id="unfollow">unfollow </a></div>
+	
+
+	</div>
+</div>
+<div class="col s4"></div>
+
+	

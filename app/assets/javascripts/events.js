@@ -9,6 +9,7 @@ $(document).ready(function(){
 		console.log(eventDate)
 		filterEvents(eventDate)
 	});
+	bindButtons();
 });
 
 
@@ -57,6 +58,7 @@ function filterEvents(eventDate){
      					 <a href="/bars/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat ">Follow</a>
     					  <a href="/events/${event.id}" class="modal-action modal-close waves-effect waves-green btn-flat center-align">Event Page</a>
      					 </div>
+     					 </div>
           				</li>
 						`
 					
@@ -90,4 +92,26 @@ function filterEvents(eventDate){
 				console.log("shit hit the fan")
 			}
 	});
+	var bindButtons = function(){
+
+    $('.followBtn').on('click', function( e ){
+    	var url = $(e.currentTarget).prop("href");
+        $.ajax({
+        	url: url,
+        	success: function (response) {
+        		$(".js-follow-count").text(response.count);
+        	}
+        });
+    
+        e.preventDefault();
+        $(e.target)
+            .addClass('disabled')
+            .removeClass('selected')
+        	.siblings()
+            .removeClass('disabled')
+            .addClass('selected');
+    });
+
+};
+	
 }

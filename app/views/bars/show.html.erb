@@ -1,34 +1,85 @@
 <div class="row barPage" style="display: inline;">
-<div class="col s8 barHeader">
+<div class="col s9 barHeader" style="position: relative;">
 <h1>Welcome to <%= "#{@bar.bar}" %> </h1>
+
+<div class="row">
+<h5>Weekly Promos</h5>
+<ul class="collapsible" data-collapsible="accordion">
+	<% @bar.promos.each do |promo|%> 
+	<li>
+		 <div class="collapsible-header"><i class="material-icons left-align " style="display: inline; width: 800px;"><%= promo.title %></i></div>
+		 <div class="collapsible-body" style="display: block;"><p><%= promo.description %></p></div>
+	</li>
+	<% end %>
+</ul>	
+</div >
+<div class="row">
+	
+	<h5>Upcoming events</h5>
+	<ul>
+	<% @bar.events.each do |event|%> 
+		<li> 
+		 <div class="card small eventcard">
+            <span class="card-title center-align"> <%= event.title %></span></a>
+            <div class="card-content">
+                Description: 
+                <br>
+                <%= event.description %>
+                                
+                </div>
+            	<div class="card-action">
+              	<div><%= link_to "Event Details", event_path(event.id) %></div>
+            	</div>
+
+                
+            </div>
+         </li>
+		<% end %>
+	</ul>
+	</div>
 </div>
 
 <!-- only for bar owner to create -  not on page for viewer -->
 <!-- need a follow button -->
 
-
-<div class="col s4 barFollow" id="follows">
+<div class="col s3 barFollow" id="follows">
+<h4>Followers<div class="js-follow-count"><%= @followerCount %></h4>
 <% if current_user %>
 	<% if @bar.followed_by?(current_user) %> 
-	<a class="waves-effect waves-light btn disabled followBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a>
+	<ul>
+		<li class="barBtnlist"><a class="waves-effect waves-light btn disabled followBtn barBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a></li>
 
-	<a class="waves-effect waves-red red btn followBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a>
+		<li class="barBtnlist"><a class="waves-effect waves-red red btn selected followBtn barBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a></li>
+	</ul>
+	
 
-	<% elsif %>
+	<% else %>
+	<ul>
+		<li class="barBtnlist"><a class="waves-effect waves-light btn selected followBtn barBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a></li>
 
-	<a class="waves-effect waves-light btn selected followBtn" href="/bars/<%= @bar.id %>/follow" id="follow">follow </a>
 
-	<a class="waves-effect waves-red red btn  disabled followBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a>
-
+		<li class="barBtnlist"><a class="waves-effect waves-red red btn  disabled followBtn barBtn" href="/bars/<%= @bar.id %>/unfollow"  id="unfollow">unfollow </a></li>
+	</ul>
 	<% end %>
-<% else %>
-	<a class="waves-effect waves-light btn selected followBtn modal-trigger" href="#modal5">follow </a>
+<% elsif %>
+	<%if current_bar%> 
+		<% if current_bar.id == @bar.id %>
+		<ul>
+			<li class="barBtnlist"><a class="waves-effect waves-light btn barBtn" href="/promos/new">Create A Promo</a></li>
+			<li class="barBtnlist"><a class="waves-effect waves-light btn barBtn" href="/events/new">Create An Event</a></li>
+			<li class="barBtnlist"><a class="waves-effect waves-light btn barBtn" href="/bar/<%= @bar.id %>/email">Contact Followers</a></li>
+		</ul>
+		<% end %>
+	<% end %>
 
+<% else %>
+		<ul>
+			<li class="barBtnlist"><a class="waves-effect waves-light btn selected followBtn barBtn modal-trigger" href="#modal5">follow </a></li>
+		</ul>
 	<div id="modal5" class="modal modal-fixed-footer">
            <div class="modal-content">
      
-             <h4> Please Sign In </h4>
-             <p>To Follow Bars you need to be signed into an account</p>
+             <h4> Please Sign into A User Account</h4>
              <p>Following Bars allows you to recieve the most upto date information on events and specials sponsored events</p>
              <p>Please Sign In to your account to stay connected </p>
              <p>If you don't have an account, it takes 30 seconds, just click the link below!! </p>
@@ -40,22 +91,18 @@
       <a href="/users/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat "> Sign Up</a></div>
       </div>
 <% end %>
-
-
-</div>
-<div>
-<%if !current_user && current_bar%>
-	<% if current_bar.id == @bar.id %>
-	<%= link_to "Create a Promo", new_promo_path() %>
-	<%= link_to "Create Event", new_event_path() %>
-	<% end %>
-<% end %>
-</div>
-<div>
-<h2> Followers </h2>
-<div class="js-follow-count"><%= @followerCount %></div>
-</div>
-
+<div >
 <%= render partial: "comments/template", locals: {commentable: @bar, new_comment: @comment} %>  
+</div>
+
+</div>
+
+
+
+
+
+
+
+</div>
 
 

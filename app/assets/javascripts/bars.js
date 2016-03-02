@@ -14,6 +14,11 @@ $(document).ready(function(){
 	// 	console.log(barType)
 	// 	filterBars()
 	// });
+	$('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+   	 	});
+ 	 
+     
 
 	bindButtons();
 
@@ -34,7 +39,7 @@ $(document).ready(function(){
 
 
 // Get your answer
-
+	
 
 	$('.modal-trigger').leanModal();
 });
@@ -54,9 +59,10 @@ function filterBars(bartype, barloc){
 			if (response.length!==0){
 	            response.forEach (function(bar){
 	            	console.log(bar)
+             						 
 	            	var html =
 	            			`
-						   <a class="social-icons modal-trigger" href="#modal4"> 
+							<a class="social-icons modal-trigger" href="#modal4"> 
         						<li data-name ="bar.bar_type">
         						  <div class="card small smallcard">
          						   <span class="card-title"> ${bar.bar}</span></a>
@@ -69,18 +75,21 @@ function filterBars(bartype, barloc){
           						  </div>
           						</div>
          					<div id="modal4" class="modal modal-fixed-footer">
-          				 <div class="modal-content">
-     
-             				<h4>${bar.bar}</h4>
-             				<p>A bunch of text about how cool this website is</p>
-          				</div>
- 
-         				<div class="modal-footer">
-         				 <a href="/bars/${bar.id}/follow" class="modal-action modal-close waves-effect waves-green btn-flat center-align">follow</a>
-     					 <a href="/bars/${bar.id}" class="modal-action modal-close waves-effect waves-green btn-flat "> Bar Page</a>
-         				</div>
+	          				 <div class="modal-content">
+	     
+	             				<h4>${bar.bar}</h4>
+	             				<p>A bunch of text about how cool this website is</p>
+	          				</div>
+	 
+	         				<div class="modal-footer">
+	         				 <a href="/bars/${bar.id}/follow" class="modal-action modal-close waves-effect waves-green btn-flat center-align">follow</a>
+	     					 <a href="/bars/${bar.id}" class="modal-action modal-close waves-effect waves-green btn-flat "> Bar Page</a>
+	         				</div>
+	         			 </div>
+
          				 </li>
 						`
+						
 
 	            	$(".js-bar-list").append(html);
 

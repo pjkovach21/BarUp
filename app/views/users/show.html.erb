@@ -1,20 +1,69 @@
-<h1> Welcome to your home page <%= "#{@user.email}" %> <h1>
+<div class="row center-align">
+<h1>Welcome to your home page <%= "#{@user.username}" %> </h1>
+</div>
+<div class="row">
 
-<!-- #need to make where on user can view their profile
- -->
-<p> you are following these Bars <p>
-<p>Total following count <%= @user.follow_count %></p>
-<ul>
 
 <!-- bar_type is not workinf for some reason? -->
 <!-- unfollow is not working too -->
 <!-- it keeps the bar name and shit, but bar is removed -->
 <!-- does not remove bars without names -->
-<% @following.each do |list| %>
+<!-- remove needs to be instant -->
+
+<div class="col s6">
+<div class="center-align">
+<h4>You are following <%= @user.following_bars_count %> Bars </h4>
+</div>
+<ul class="center-align">
+<% @user.following_bars.each do |list| %>
 	<li>
-		<p>Bar Name: <%= list.bar %></p>
+		<div class="card small listcard">
+			<span class="card-title center-align"> Bar Name: <%= list.bar %></span>
+		 	<div class="card-content class="center-align"">
+           		Description: 
+           		<br>
+           		
+                            
+           </div>
+           		<div class="card-action class="center-align"">
+          		<div><%= link_to "Bar Details", event_path(list.id) %></div>
+       			</div>
+		</div>
 		
-		<p> unFollow: <%= link_to "unfollow this lame bar", unfollow_bar_path(list) %>  </p>
+
 	</li>
 <% end %>
-</ul>
+</ul>	
+
+
+ </div> 
+ <div class="col s6 ">  
+ <div class="center-align">
+<h4>You are following <%= @user.following_events_count %> Events </h4>
+</div>
+ <ul class="center-align">
+<% @user.following_events.each do |list| %>
+	<li >
+		<div class="card small listcard center-align">
+			<span class="card-title "> Event Name: <%= list.title %></span>
+		 	<div class="card-content">
+           		Description: 
+           		<br>
+           		
+                            
+           </div>
+           		<div class="card-action center-align">
+          		<div><%= link_to "Event Details", event_path(list.id) %></div>
+       			</div>
+		</div>
+
+		
+
+	</li>
+<% end %>
+</ul>      
+ </div> 
+            	
+
+                
+            
