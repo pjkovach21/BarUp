@@ -1,6 +1,17 @@
 <div class="row center-align">
 <h1> <%= @event.title %> </h1>
 
+<% if current_bar %>
+	<% if current_bar.id === @event.bar_id %>
+			<a href="/event/<%= @event.bar_id %>/email" class="waves-effect waves-light btn" style="width: 250px;" id="follow">
+				Contact Followers
+			</a>
+			<a href=""></a>
+			
+	<% end %>
+<% end %>
+
+</div>
 
 <div class="row center-align ">
 
@@ -26,5 +37,6 @@
 	</div>
 </div>
 <div class="col s4"></div>
+</div>
 
 	

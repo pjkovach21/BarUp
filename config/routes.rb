@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   post "bar/:id/sendmail" => "bars#send_form"
   get "/bars/:id/:followCount" => "bars#follows_count"
   get "/eventss/:id/:followCount" => "bars#follows_count"
+  get "/event/:id/email" => "events#email_form"
+  post "event/:id/sendmail" => "events#send_form"
   #post "bar/:id/comment" => "comments#new"
 
 

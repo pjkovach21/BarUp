@@ -2,6 +2,9 @@ require 'Date'
 class EventsController < ApplicationController
 	before_action :check_if_can_create_event, only: [:new, :create]
 	before_action -> (id = params[:id]) { check_if_can_edit_or_destroy(id)}, only: [:edit, :update, :destroy]
+	skip_before_filter  :verify_authenticity_token
+
+
 
 	def show
 		@event = Event.find(params[:id])
@@ -105,6 +108,23 @@ class EventsController < ApplicationController
 	def followers_count
 		@event  = Event.find(params[:id])
 		@followerCount = @event.followers_count
+		
+	end
+
+	def send_form
+		@event = Event.find_by(id: params[:id])
+		@event.followers.each do |follower|
+		
+			EventMailer.event_email(follower, params[:subject], params[:body]).deliver_now
+		end
+
+		redirect_to "/"
+	end
+
+	def email_form
+		@event = Event.find_by(id: params[:id])
+		render 'email_form'
+		# @bar = current_bar
 		
 	end
 
