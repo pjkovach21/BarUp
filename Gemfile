@@ -33,6 +33,11 @@ gem "acts_as_follower"
 gem  "figaro"
 gem 'awesome_nested_set'
 gem 'acts_as_commentable_with_threading'
+gem 'carrierwave'
+gem "rmagick"
+gem "carrierwave-aws"
+gem "fog"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

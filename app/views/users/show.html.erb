@@ -12,12 +12,13 @@
 
 <div class="col s6">
 <div class="center-align">
+<%= image_tag @user.avatar %>
 <h4>You are following <%= @user.following_bars_count %> Bars </h4>
 </div>
 <ul class="center-align">
 <% @user.following_bars.each do |list| %>
 	<li>
-		<div class="card small listcard">
+		<div class="card small smallcard">
 			<span class="card-title center-align"> Bar Name: <%= list.bar %></span>
 		 	<div class="card-content class="center-align"">
            		Description: 
@@ -25,7 +26,7 @@
            		
                             
            </div>
-           		<div class="card-action class="center-align"">
+           		<div class="card-action  class="center-align"">
           		<div><%= link_to "Bar Details", event_path(list.id) %></div>
        			</div>
 		</div>
@@ -44,7 +45,7 @@
  <ul class="center-align">
 <% @user.following_events.each do |list| %>
 	<li >
-		<div class="card small listcard center-align">
+		<div class="card small smallcard center-align">
 			<span class="card-title "> Event Name: <%= list.title %></span>
 		 	<div class="card-content">
            		Description: 
