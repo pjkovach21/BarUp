@@ -1,8 +1,6 @@
-<div class="row center-align">
-<div class=" col s2">
-<div class="prophoto"><%= image_tag @user.avatar %> </div>
-</div>
-<div class=" col s10 left-align">
+<div class="row">
+
+<div class=" col s12 center-align">
 <h1>Welcome to your home page <%= "#{@user.username}" %> </h1>
 </div>
 </div>
@@ -23,7 +21,7 @@
 <ul class="center-align">
 <% @user.following_bars.each do |list| %>
 	<li>
-		<div class="card small smallcard">
+		<div class="card small smallcard indigo lighten-5">
 			<span class="card-title center-align"> Bar Name: <%= list.bar %></span>
 		 	<div class="card-content class="center-align"">
            		Description: 
@@ -50,7 +48,7 @@
  <ul class="center-align">
 <% @user.following_events.each do |list| %>
 	<li >
-		<div class="card small smallcard center-align">
+		<div class="card small smallcard center-align red lighten-5">
 			<span class="card-title "> Event Name: <%= list.title %></span>
 		 	<div class="card-content">
            		Description: 

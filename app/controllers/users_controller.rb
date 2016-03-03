@@ -14,14 +14,14 @@ class UsersController < ApplicationController
 		render :json => { :count => @bar.followers_count }
 	end
 
-	def create
-		@username = User.create(user_params)
-	end
+	# def create
+	# 	@username = User.create(user_params)
+	# end
 
-	private
-	def user_params
-		params.require(:user).permit(:avatar)
-	end
+	# private
+	# def user_params
+	# 	params.require(:user).permit(:avatar)
+	# end
 
 
 end

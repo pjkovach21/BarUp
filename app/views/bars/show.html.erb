@@ -1,52 +1,7 @@
 <div class="row barPage" style="display: inline;">
 <div class=" col s3">
 <div class="prophoto"><%= image_tag(@bar.avatar, :size => "200x200") %> </div>
-</div>
-<div class="col s6 barHeader" style="position: relative;">
-<h1>Welcome to <%= "#{@bar.bar}" %> </h1>
-
-<div class="row">
-<h5>Weekly Promos</h5>
-<ul class="collapsible" data-collapsible="accordion">
-	<% @bar.promos.each do |promo|%> 
-	<li>
-		 <div class="collapsible-header"><i class="material-icons left-align " style="display: inline; width: 800px;"><%= promo.title %></i></div>
-		 <div class="collapsible-body" style="display: block;"><p><%= promo.description %></p></div>
-	</li>
-	<% end %>
-</ul>	
-</div >
-<div class="row">
-	
-	<h5>Upcoming events</h5>
-	<ul>
-	<% @bar.events.each do |event|%> 
-		<li> 
-		 <div class="card small smallcard">
-            <span class="card-title center-align"> <%= event.title %></span></a>
-            <div class="card-content">
-                Description: 
-                <br>
-                <%= event.description %>
-                                
-                </div>
-            	<div class="card-action">
-              	<div><%= link_to "Event Details", event_path(event.id) %></div>
-            	</div>
-
-                
-            </div>
-         </li>
-		<% end %>
-	</ul>
-	</div>
-</div>
-
-<!-- only for bar owner to create -  not on page for viewer -->
-<!-- need a follow button -->
-
-<div class="col s3 barFollow" id="follows">
-<h4>Followers<div class="js-follow-count"><%= @followerCount %></h4>
+<div class="center-align"><h4>Followers<div class="js-follow-count"><%= @followerCount %></h4></div>
 <% if current_user %>
 	<% if @bar.followed_by?(current_user) %> 
 	<ul>
@@ -94,6 +49,52 @@
       <a href="/users/sign_up" class="modal-action modal-close waves-effect waves-green btn-flat "> Sign Up</a></div>
       </div>
 <% end %>
+</div>
+<div class="col s6 barHeader" style="position: relative;">
+<h1>Welcome to <%= "#{@bar.bar}" %> </h1>
+
+<div class="row">
+<h5>Weekly Promos</h5>
+<ul class="collapsible" data-collapsible="accordion">
+	<% @bar.promos.each do |promo|%> 
+	<li>
+		 <div class="collapsible-header"><i class="material-icons left-align " style="display: inline; width: 800px;"><%= promo.title %></i></div>
+		 <div class="collapsible-body" style="display: block;"><p><%= promo.description %></p></div>
+	</li>
+	<% end %>
+</ul>	
+</div >
+<div class="row">
+	
+	<h5>Upcoming events</h5>
+	<ul>
+	<% @bar.events.each do |event|%> 
+		<li> 
+		 <div class="card small smallcard red lighten-5">
+            <span class="card-title center-align"> <%= event.title %></span></a>
+            <div class="card-content">
+                Description: 
+                <br>
+                <%= event.description %>
+                                
+                </div>
+            	<div class="card-action">
+              	<div><%= link_to "Event Details", event_path(event.id) %></div>
+            	</div>
+
+                
+            </div>
+         </li>
+		<% end %>
+	</ul>
+	</div>
+</div>
+
+<!-- only for bar owner to create -  not on page for viewer -->
+<!-- need a follow button -->
+
+<div class="col s3 barFollow" id="follows">
+
 <div >
 <%= render partial: "comments/template", locals: {commentable: @bar, new_comment: @comment} %>  
 </div>

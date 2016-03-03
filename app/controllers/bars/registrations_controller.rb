@@ -45,7 +45,7 @@ class Bars::RegistrationsController < Devise::RegistrationsController
   # end
 
 
-
+  #add to the devise users registations controller
   protected
 
    def sign_up_params
