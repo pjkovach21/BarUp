@@ -28,10 +28,15 @@
 	<div class="row" >
 
 
-	
+	<% if current_bar %>
+
+		<div style="display: inline-block;" class="eventBtnlist"><a class="waves-effect waves-light btn barBtn" href="/bars/<%= @event.bar_id %>"> Bar Page</a></div>
+
+		<% else %>
 		<div style="display: inline-block;" class="eventBtnlist"><a class="waves-effect waves-light btn followBtn eventBtn" href="/events/<%= @event.id %>/follow" id="follow">follow </a></div>
 
 		<div style="display: inline-block;" class="eventBtnlist"><a class="waves-effect waves-red red btn followBtn eventBtn" href="/events/<%= @event.id %>/unfollow"  id="unfollow">unfollow </a></div>
+	<% end %>
 	
 
 	</div>
