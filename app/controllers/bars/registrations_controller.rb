@@ -49,7 +49,7 @@ class Bars::RegistrationsController < Devise::RegistrationsController
   protected
 
    def sign_up_params
-      params.require(resource_name).permit(:email, :bar, :password, :password_confirmation, :bar_type, :locations_attributes => [:neighborhood, :location])
+      params.require(resource_name).permit(:email, :bar, :avatar,:password, :password_confirmation, :bar_type, :locations_attributes => [:neighborhood, :location])
       # params.require(resource_name).permit!
     end
 

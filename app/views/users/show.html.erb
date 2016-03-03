@@ -1,5 +1,10 @@
 <div class="row center-align">
+<div class=" col s2">
+<div class="prophoto"><%= image_tag @user.avatar %> </div>
+</div>
+<div class=" col s10 left-align">
 <h1>Welcome to your home page <%= "#{@user.username}" %> </h1>
+</div>
 </div>
 <div class="row">
 
@@ -12,7 +17,7 @@
 
 <div class="col s6">
 <div class="center-align">
-<%= image_tag @user.avatar %>
+
 <h4>You are following <%= @user.following_bars_count %> Bars </h4>
 </div>
 <ul class="center-align">

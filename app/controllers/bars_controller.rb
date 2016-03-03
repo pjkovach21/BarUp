@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-	
+	skip_before_filter :verify_authenticity_token
 
 
 	def index
@@ -79,6 +79,15 @@ class BarsController < ApplicationController
 		@bar  = Bar.find(params[:id])
 		@followerCount = @bar.followers_count
 		
+	end
+
+	def create
+		@bar = Bar.create(bar_params)
+	end
+
+	private
+	def bar_params
+		params.require(:bar).permit(:avatar)
 	end
 
 	

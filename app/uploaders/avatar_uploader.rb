@@ -8,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  storage :fog
+  storage :file
 
   def cache_dir
     "#{Rails.root}/tmp/uploads"
@@ -20,7 +20,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do 
-    process :resize_to_limit => [150,150]
+    process :resize_to_fit => [300,300]
   end
 
   def default_pic
