@@ -40,6 +40,10 @@ gem "fog"
 #needed to push to heroku
 gem "rails_12factor", group: :production
 
+#added because i am using template strings in my js (interpelation)
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6',require: "sprockets/es6"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
